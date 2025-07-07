@@ -16,9 +16,7 @@ resource "aws_security_group" "terraform_sg"{
         cidr_blocks = var.cidr
     }
 
-    tags = {
-        Name = var.tags_sg
-    }
+    tags = var.tags_sg
 }
 
 #creating Ec2 instance
