@@ -24,6 +24,6 @@ resource "aws_instance" "test-server"{
     ami = var.ami_id
     vpc_security_group_ids = [ aws_security_group.terraform_sg.id ]
     instance_type = var.instance_type
-    tags = vars.tags
+    tags = var.tags
     
 }
