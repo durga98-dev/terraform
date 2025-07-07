@@ -1,9 +1,9 @@
-resource "aws_security_group" "sg-terraform"{
-    name = "sg-terraform"
+resource "aws_security_group" "terraform_sg"{
+    name = "terraform_sg"
     description = "all inbound traffic and all outbound traffic"
     #vpc_id optional - will take default vpc 
     tags = {
-        Name = "sg-terraform"
+        Name = "terraform_sg"
     }
 }
 
