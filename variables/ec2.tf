@@ -6,28 +6,26 @@ resource "aws_security_group" "terraform_sg"{
         from_port = 0
         to_port = 0
         protocol = "-1" # all protocols
-        cidr_blocks = [ "0.0.0.0/0" ]
+        cidr_blocks = var.cidr
     }
 
     ingress {
-        from_port = 22
-        to_port = 22
+        from_port = var.from_port
+        to_port = var.to_port
         protocol = "tcp" # all protocols
-        cidr_blocks = [ "0.0.0.0/0" ]
+        cidr_blocks = var.cidr
     }
 
     tags = {
-        Name = "terraform_sg"
+        Name = var.tags_sg
     }
 }
 
 #creating Ec2 instance
 resource "aws_instance" "test-server"{
-    ami = "ami-09c813fb71547fc4f"
+    ami = var.ami_id
     vpc_security_group_ids = [ aws_security_group.terraform_sg.id ]
-    instance_type = "t3.micro"
-    tags = {
-        Name = "terraform-demo"
-    }
+    instance_type = var.instance_type
+    tags = vars.tags
     
 }
