@@ -16,9 +16,11 @@ resource "aws_security_group" "terraform_sg"{
         cidr_blocks = [ "0.0.0.0/0" ]
     }
 
-    tags = {
+    tags = merge (var.common_tags ,
+    {
         Name = "terraform_sg"
     }
+    )
 }
 
 #creating Ec2 instance
@@ -29,6 +31,5 @@ resource "aws_instance" "test-server"{
     instance_type = "t3.micro"
     tags = {
         Name = var.instances[count.index]
-    }
-    
+    }    
 }

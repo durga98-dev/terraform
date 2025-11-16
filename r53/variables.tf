@@ -1,6 +1,6 @@
 variable "instances"{
-    type = map
-    default = ["mysql", "backend", "frontend"]
+    type = list
+    default = [ "mysql", "backend", "frontend" ]
 }
 
 variable "zone_id"{
@@ -9,4 +9,11 @@ variable "zone_id"{
 
 variable "domain_name"{
     default = "durgadevops.fun"
+}
+
+variable "common_tags"{
+    default = {
+        Project = "expense"
+        Environment = "dev"
+    }
 }
