@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "expense-state-bucket"
-    key = "ec2_for_each_info" # you should have unique keys within the bucket, same key should not be used in other projects or repos
+    bucket = "terraform-dynamo-statefile"
+    key = "r53_info" # you should have unique keys within the bucket, same key should not be used in other projects or repos
     region = "us-east-1"
-    dynamodb_table = "state-locking"
+    dynamodb_table = "state-lock"
   }
 }
 
